@@ -4,7 +4,7 @@
 import TestHelper from '../../../test/test_helper';
 import deepFreezeAndThrowOnMutation from 'mattermost-redux/utils/deep_freeze';
 
-import {UserStatuses} from 'utils/constants';
+import {UserStatuses} from 'src/utils/constants';
 
 import {makeAddLastViewAtToProfiles} from './utils';
 

@@ -4,7 +4,7 @@
 import {AppBinding} from '@mattermost/types/apps';
 
 import * as Selectors from 'mattermost-redux/selectors/entities/apps';
-import {GlobalState} from 'types/store';
+import {GlobalState} from 'src/types/store';
 import {AppBindingLocations} from 'mattermost-redux/constants/apps';
 
 const makeNewState = (pluginEnabled: boolean, flag?: string, bindings?: AppBinding[]) => ({

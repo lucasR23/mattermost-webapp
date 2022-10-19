@@ -18,7 +18,7 @@ import {Client4} from '@mattermost/client';
 import General from 'mattermost-redux/constants/general';
 import {generateId} from 'mattermost-redux/utils/helpers';
 
-import {UserStatuses} from 'utils/constants';
+import {UserStatuses} from 'src/utils/constants';
 
 export const DEFAULT_SERVER = 'http://localhost:8065';
 const PASSWORD = 'password1';

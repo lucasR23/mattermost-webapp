@@ -26,7 +26,7 @@ import {
 } from 'mattermost-redux/utils/channel_utils';
 import {getPreferenceKey} from 'mattermost-redux/utils/preference_utils';
 import {displayUsername} from 'mattermost-redux/utils/user_utils';
-import Constants from 'utils/constants';
+import Constants from 'src/utils/constants';
 
 export function getAllCategoriesByIds(state: GlobalState) {
     return state.entities.channelCategories.byId;

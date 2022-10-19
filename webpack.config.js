@@ -135,11 +135,10 @@ if (DEV) {
 }
 
 var config = {
-    entry: ['./root.tsx', 'root.html'],
+    entry: ['./src/mainEnterpoint.tsx'],
     output: {
         publicPath,
-        filename: '[name].[contenthash].js',
-        chunkFilename: '[name].[contenthash].js',
+        filename: 'index.js',
         clean: true,
     },
     module: {
@@ -221,17 +220,6 @@ var config = {
                     },
                 ],
             },
-            {
-                test: /\.html$/,
-                use: [
-                    {
-                        loader: 'html-loader',
-                        options: {
-                            sources: false,
-                        },
-                    },
-                ],
-            },
         ],
     },
     resolve: {
@@ -240,6 +228,7 @@ var config = {
             path.resolve(__dirname),
         ],
         alias: {
+            './': './src',
             'mattermost-redux/test': 'packages/mattermost-redux/test',
             'mattermost-redux': 'packages/mattermost-redux/src',
             reselect: 'packages/reselect/src',
@@ -266,116 +255,105 @@ var config = {
             filename: '[name].[contenthash].css',
             chunkFilename: '[name].[contenthash].css',
         }),
-        new HtmlWebpackPlugin({
-            filename: 'root.html',
-            inject: 'head',
-            template: 'root.html',
-            meta: {
-                csp: {
-                    'http-equiv': 'Content-Security-Policy',
-                    content: generateCSP(),
-                },
-            },
-        }),
         new CopyWebpackPlugin({
             patterns: [
-                {from: 'images/emoji', to: 'emoji'},
-                {from: 'images/img_trans.gif', to: 'images'},
-                {from: 'images/logo-email.png', to: 'images'},
-                {from: 'images/circles.png', to: 'images'},
-                {from: 'images/favicon', to: 'images/favicon'},
-                {from: 'images/appIcons.png', to: 'images'},
-                {from: 'images/warning.png', to: 'images'},
-                {from: 'images/logo-email.png', to: 'images'},
-                {from: 'images/browser-icons', to: 'images/browser-icons'},
-                {from: 'images/cloud', to: 'images'},
-                {from: 'images/welcome_illustration_new.png', to: 'images'},
-                {from: 'images/logo_email_blue.png', to: 'images'},
-                {from: 'images/logo_email_dark.png', to: 'images'},
-                {from: 'images/logo_email_gray.png', to: 'images'},
-                {from: 'images/forgot_password_illustration.png', to: 'images'},
-                {from: 'images/invite_illustration.png', to: 'images'},
-                {from: 'images/channel_icon.png', to: 'images'},
-                {from: 'images/add_payment_method.png', to: 'images'},
-                {from: 'images/add_subscription.png', to: 'images'},
-                {from: 'images/c_avatar.png', to: 'images'},
-                {from: 'images/c_download.png', to: 'images'},
-                {from: 'images/c_socket.png', to: 'images'},
-                {from: 'images/admin-onboarding-background.jpg', to: 'images'},
-                {from: 'images/payment-method-illustration.png', to: 'images'},
-                {from: 'images/cloud-laptop.png', to: 'images'},
-                {from: 'images/cloud-laptop-error.png', to: 'images'},
-                {from: 'images/cloud-laptop-warning.png', to: 'images'},
-                {from: 'images/cloud-upgrade-person-hand-to-face.png', to: 'images'},
+                {from: 'src/images/emoji', to: 'emoji'},
+                {from: 'src/images/img_trans.gif', to: 'images'},
+                {from: 'src/images/logo-email.png', to: 'images'},
+                {from: 'src/images/circles.png', to: 'images'},
+                {from: 'src/images/favicon', to: 'images/favicon'},
+                {from: 'src/images/appIcons.png', to: 'images'},
+                {from: 'src/images/warning.png', to: 'images'},
+                {from: 'src/images/logo-email.png', to: 'images'},
+                {from: 'src/images/browser-icons', to: 'images/browser-icons'},
+                {from: 'src/images/cloud', to: 'images'},
+                {from: 'src/images/welcome_illustration_new.png', to: 'images'},
+                {from: 'src/images/logo_email_blue.png', to: 'images'},
+                {from: 'src/images/logo_email_dark.png', to: 'images'},
+                {from: 'src/images/logo_email_gray.png', to: 'images'},
+                {from: 'src/images/forgot_password_illustration.png', to: 'images'},
+                {from: 'src/images/invite_illustration.png', to: 'images'},
+                {from: 'src/images/channel_icon.png', to: 'images'},
+                {from: 'src/images/add_payment_method.png', to: 'images'},
+                {from: 'src/images/add_subscription.png', to: 'images'},
+                {from: 'src/images/c_avatar.png', to: 'images'},
+                {from: 'src/images/c_download.png', to: 'images'},
+                {from: 'src/images/c_socket.png', to: 'images'},
+                {from: 'src/images/admin-onboarding-background.jpg', to: 'images'},
+                {from: 'src/images/payment-method-illustration.png', to: 'images'},
+                {from: 'src/images/cloud-laptop.png', to: 'images'},
+                {from: 'src/images/cloud-laptop-error.png', to: 'images'},
+                {from: 'src/images/cloud-laptop-warning.png', to: 'images'},
+                {from: 'src/images/cloud-upgrade-person-hand-to-face.png', to: 'images'},
             ],
         }),
 
         // Generate manifest.json, honouring any configured publicPath. This also handles injecting
         // <link rel="apple-touch-icon" ... /> and <meta name="apple-*" ... /> tags into root.html.
-        new WebpackPwaManifest({
-            name: 'Mattermost',
-            short_name: 'Mattermost',
-            start_url: '..',
-            description: 'Mattermost is an open source, self-hosted Slack-alternative',
-            background_color: '#ffffff',
-            inject: true,
-            ios: true,
-            fingerprints: false,
-            orientation: 'any',
-            filename: 'manifest.json',
-            icons: [{
-                src: path.resolve('images/favicon/android-chrome-192x192.png'),
-                type: 'image/png',
-                sizes: '192x192',
-            }, {
-                src: path.resolve('images/favicon/apple-touch-icon-120x120.png'),
-                type: 'image/png',
-                sizes: '120x120',
-                ios: true,
-            }, {
-                src: path.resolve('images/favicon/apple-touch-icon-144x144.png'),
-                type: 'image/png',
-                sizes: '144x144',
-                ios: true,
-            }, {
-                src: path.resolve('images/favicon/apple-touch-icon-152x152.png'),
-                type: 'image/png',
-                sizes: '152x152',
-                ios: true,
-            }, {
-                src: path.resolve('images/favicon/apple-touch-icon-57x57.png'),
-                type: 'image/png',
-                sizes: '57x57',
-                ios: true,
-            }, {
-                src: path.resolve('images/favicon/apple-touch-icon-60x60.png'),
-                type: 'image/png',
-                sizes: '60x60',
-                ios: true,
-            }, {
-                src: path.resolve('images/favicon/apple-touch-icon-72x72.png'),
-                type: 'image/png',
-                sizes: '72x72',
-                ios: true,
-            }, {
-                src: path.resolve('images/favicon/apple-touch-icon-76x76.png'),
-                type: 'image/png',
-                sizes: '76x76',
-                ios: true,
-            }, {
-                src: path.resolve('images/favicon/favicon-16x16.png'),
-                type: 'image/png',
-                sizes: '16x16',
-            }, {
-                src: path.resolve('images/favicon/favicon-32x32.png'),
-                type: 'image/png',
-                sizes: '32x32',
-            }, {
-                src: path.resolve('images/favicon/favicon-96x96.png'),
-                type: 'image/png',
-                sizes: '96x96',
-            }],
-        }),
+        // new WebpackPwaManifest({
+        //     name: 'Mattermost',
+        //     short_name: 'Mattermost',
+        //     start_url: '..',
+        //     description: 'Mattermost is an open source, self-hosted Slack-alternative',
+        //     background_color: '#ffffff',
+        //     inject: true,
+        //     ios: true,
+        //     fingerprints: false,
+        //     orientation: 'any',
+        //     filename: 'manifest.json',
+        //     icons: [{
+        //         src: path.resolve('images/favicon/android-chrome-192x192.png'),
+        //         type: 'image/png',
+        //         sizes: '192x192',
+        //     }, {
+        //         src: path.resolve('images/favicon/apple-touch-icon-120x120.png'),
+        //         type: 'image/png',
+        //         sizes: '120x120',
+        //         ios: true,
+        //     }, {
+        //         src: path.resolve('images/favicon/apple-touch-icon-144x144.png'),
+        //         type: 'image/png',
+        //         sizes: '144x144',
+        //         ios: true,
+        //     }, {
+        //         src: path.resolve('images/favicon/apple-touch-icon-152x152.png'),
+        //         type: 'image/png',
+        //         sizes: '152x152',
+        //         ios: true,
+        //     }, {
+        //         src: path.resolve('images/favicon/apple-touch-icon-57x57.png'),
+        //         type: 'image/png',
+        //         sizes: '57x57',
+        //         ios: true,
+        //     }, {
+        //         src: path.resolve('images/favicon/apple-touch-icon-60x60.png'),
+        //         type: 'image/png',
+        //         sizes: '60x60',
+        //         ios: true,
+        //     }, {
+        //         src: path.resolve('images/favicon/apple-touch-icon-72x72.png'),
+        //         type: 'image/png',
+        //         sizes: '72x72',
+        //         ios: true,
+        //     }, {
+        //         src: path.resolve('images/favicon/apple-touch-icon-76x76.png'),
+        //         type: 'image/png',
+        //         sizes: '76x76',
+        //         ios: true,
+        //     }, {
+        //         src: path.resolve('images/favicon/favicon-16x16.png'),
+        //         type: 'image/png',
+        //         sizes: '16x16',
+        //     }, {
+        //         src: path.resolve('images/favicon/favicon-32x32.png'),
+        //         type: 'image/png',
+        //         sizes: '32x32',
+        //     }, {
+        //         src: path.resolve('images/favicon/favicon-96x96.png'),
+        //         type: 'image/png',
+        //         sizes: '96x96',
+        //     }],
+        // }),
 
         // Disabling this plugin until we come up with better bundle analysis ci
         // new BundleAnalyzerPlugin({
@@ -480,7 +458,6 @@ async function initializeModuleFederation() {
             // Other containers will use these shared modules if their required versions match. If they don't match, the
             // version packaged with the container will be used.
             '@mattermost/client',
-            '@mattermost/components',
             '@mattermost/types',
             'luxon',
             'prop-types',
@@ -544,53 +521,6 @@ if (targetIsTest) {
     config.entry = ['./root.tsx'];
     config.target = 'node';
     config.externals = [nodeExternals()];
-}
-
-if (targetIsDevServer) {
-    config = {
-        ...config,
-        devtool: 'eval-cheap-module-source-map',
-        devServer: {
-            liveReload: true,
-            proxy: [{
-                context: () => true,
-                bypass(req) {
-                    if (req.url.indexOf('/api') === 0 ||
-                        req.url.indexOf('/plugins') === 0 ||
-                        req.url.indexOf('/static/plugins/') === 0 ||
-                        req.url.indexOf('/sockjs-node/') !== -1) {
-                        return null; // send through proxy to the server
-                    }
-                    if (req.url.indexOf('/static/') === 0) {
-                        return path; // return the webpacked asset
-                    }
-
-                    // redirect (root, team routes, etc)
-                    return '/static/root.html';
-                },
-                logLevel: 'silent',
-                target: 'http://localhost:8065',
-                xfwd: true,
-                ws: true,
-            }],
-            port: 9005,
-            devMiddleware: {
-                writeToDisk: false,
-            },
-        },
-        performance: false,
-        optimization: {
-            ...config.optimization,
-            splitChunks: false,
-        },
-        resolve: {
-            ...config.resolve,
-            alias: {
-                ...config.resolve.alias,
-                'react-dom': '@hot-loader/react-dom',
-            },
-        },
-    };
 }
 
 // Export PRODUCTION_PERF_DEBUG=1 when running webpack to enable support for the react profiler

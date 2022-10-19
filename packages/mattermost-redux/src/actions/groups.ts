@@ -11,7 +11,7 @@ import {Client4} from 'mattermost-redux/client';
 import {ActionFunc, DispatchFunc, GetStateFunc} from 'mattermost-redux/types/actions';
 import {GroupPatch, SyncableType, SyncablePatch, GroupCreateWithUserIds, CustomGroupPatch, GroupSearachParams} from '@mattermost/types/groups';
 
-import Constants from 'utils/constants';
+import Constants from 'src/utils/constants';
 
 import {logError} from './errors';
 import {bindClientFunc, forceLogoutIfNecessary} from './helpers';

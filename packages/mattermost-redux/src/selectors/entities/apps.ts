@@ -10,7 +10,7 @@ import {ClientConfig} from '@mattermost/types/config';
 import {getConfig} from 'mattermost-redux/selectors/entities/general';
 import {AppBindingLocations} from 'mattermost-redux/constants/apps';
 
-import {Locations} from 'utils/constants';
+import {Locations} from 'src/utils/constants';
 
 // This file's contents belong to the Apps Framework feature.
 // Apps Framework feature is experimental, and the contents of this file are

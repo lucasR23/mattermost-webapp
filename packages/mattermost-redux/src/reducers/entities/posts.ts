@@ -4,7 +4,7 @@
 import {ChannelTypes, GeneralTypes, PostTypes, UserTypes, ThreadTypes, InsightTypes, CloudTypes} from 'mattermost-redux/action_types';
 
 import {Posts} from 'mattermost-redux/constants';
-import {PostTypes as PostConstant} from 'utils/constants';
+import {PostTypes as PostConstant} from 'src/utils/constants';
 
 import {GenericAction} from 'mattermost-redux/types/actions';
 import {

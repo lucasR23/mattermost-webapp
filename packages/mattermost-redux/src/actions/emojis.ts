@@ -9,16 +9,16 @@ import {parseNeededCustomEmojisFromText} from 'mattermost-redux/utils/emoji_util
 
 import {GetStateFunc, DispatchFunc, ActionFunc, ActionResult} from 'mattermost-redux/types/actions';
 
-import {getRecentEmojisData} from 'selectors/emojis';
+import {getRecentEmojisData} from 'src/selectors/emojis';
 
 import {CustomEmoji} from '@mattermost/types/emojis';
 
-import LocalStorageStore from 'stores/local_storage_store';
+import LocalStorageStore from 'src/stores/local_storage_store';
 
-import {GlobalState} from 'types/store';
+import {GlobalState} from 'src/types/store';
 import {getCurrentUserId} from 'mattermost-redux/selectors/entities/common';
 
-import Constants from 'utils/constants';
+import Constants from 'src/utils/constants';
 
 import {logError} from './errors';
 import {bindClientFunc, forceLogoutIfNecessary} from './helpers';

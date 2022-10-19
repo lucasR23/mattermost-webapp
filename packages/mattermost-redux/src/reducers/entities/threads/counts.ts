@@ -7,7 +7,7 @@ import {ThreadsState, UserThread} from '@mattermost/types/threads';
 import {Team, TeamUnread} from '@mattermost/types/teams';
 import {Channel} from '@mattermost/types/channels';
 
-import Constants from 'utils/constants';
+import Constants from 'src/utils/constants';
 
 import {ExtraData} from './types';
 

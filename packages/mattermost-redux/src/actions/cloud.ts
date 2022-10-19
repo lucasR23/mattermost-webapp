@@ -7,7 +7,7 @@ import {DispatchFunc, GetStateFunc, ActionFunc} from 'mattermost-redux/types/act
 import {Address, CloudCustomerPatch} from '@mattermost/types/cloud';
 
 import {getCloudErrors} from 'mattermost-redux/selectors/entities/cloud';
-import {getCloudLimits} from 'actions/cloud';
+import {getCloudLimits} from 'src/actions/cloud';
 
 import {bindClientFunc} from './helpers';
 

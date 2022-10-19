@@ -8,7 +8,7 @@ import {CloudTypes} from 'mattermost-redux/action_types';
 import {GenericAction} from 'mattermost-redux/types/actions';
 import {Product, Subscription, SubscriptionResponse, CloudCustomer, Invoice, Limits} from '@mattermost/types/cloud';
 
-import {LegacyFreeProductIds} from 'utils/constants';
+import {LegacyFreeProductIds} from 'src/utils/constants';
 
 export function subscription(state: Subscription | null = null, action: GenericAction) {
     switch (action.type) {

@@ -10,7 +10,7 @@ import {getTeam} from 'mattermost-redux/selectors/entities/teams';
 import {UserMentionKey} from 'mattermost-redux/selectors/entities/users';
 import {GlobalState} from '@mattermost/types/store';
 
-import Constants from 'utils/constants';
+import Constants from 'src/utils/constants';
 
 import {getCurrentUserLocale} from './i18n';
 

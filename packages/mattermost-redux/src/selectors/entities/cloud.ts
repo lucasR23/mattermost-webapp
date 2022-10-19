@@ -3,7 +3,7 @@
 
 import {Limits, Subscription, Product, CloudCustomer, CloudState} from '@mattermost/types/cloud';
 import {GlobalState} from '@mattermost/types/store';
-import {LegacyFreeProductIds} from 'utils/constants';
+import {LegacyFreeProductIds} from 'src/utils/constants';
 
 import {getLicense} from './general';
 

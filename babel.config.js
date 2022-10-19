@@ -19,25 +19,13 @@ const config = {
         ['@babel/preset-react', {
             useBuiltIns: true,
         }],
-        ['@babel/typescript', {
+        './my-preset',
+        ['@babel/preset-typescript', {
             allExtensions: true,
             isTSX: true,
         }],
     ],
-    plugins: [
-        'lodash',
-        '@babel/plugin-proposal-class-properties',
-        '@babel/plugin-proposal-object-rest-spread',
-        'react-hot-loader/babel',
-        'babel-plugin-typescript-to-proptypes',
-        [
-            'babel-plugin-styled-components',
-            {
-                ssr: false,
-                fileName: false,
-            },
-        ],
-    ],
+    plugins: [],
     sourceType: 'unambiguous',
 };
 
