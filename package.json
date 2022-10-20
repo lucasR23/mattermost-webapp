@@ -1,10 +1,11 @@
 {
-  "name": "mattermost-webapp",
+  "name": "tes-int-matter",
   "browser": {
     "./client/web_client.jsx": "./client/browser_web_client.jsx"
   },
-  "version": "7.3.0",
-  "private": true,
+  "version": "0.0.1",
+  "private": false,
+  "main": "dist/main.js",
   "engines": {
     "npm": ">=7.0.0",
     "node": ">=16.4.0"

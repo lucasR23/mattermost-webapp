@@ -124,22 +124,11 @@ var MYSTATS = {
     warningsFilter: '',
 };
 
-let publicPath = '/static/';
-
-// Allow overriding the publicPath in dev from the exported SiteURL.
-if (DEV) {
-    const siteURL = process.env.MM_SERVICESETTINGS_SITEURL || '';
-    if (siteURL) {
-        publicPath = path.join(new url.URL(siteURL).pathname, 'static') + '/';
-    }
-}
-
 var config = {
-    entry: ['./root.tsx', 'root.html'],
+    entry: ['./index.tsx'],
     output: {
-        publicPath,
-        filename: '[name].[contenthash].js',
-        chunkFilename: '[name].[contenthash].js',
+        filename: '[name].js',
+        chunkFilename: '[name].js',
         clean: true,
     },
     module: {
@@ -165,7 +154,7 @@ var config = {
                 exclude: [/en\.json$/],
                 use: [
                     {
-                        loader: 'file-loader?name=i18n/[name].[contenthash].[ext]',
+                        loader: 'file-loader?name=i18n/[name].[ext]',
                     },
                 ],
             },
@@ -221,17 +210,6 @@ var config = {
                     },
                 ],
             },
-            {
-                test: /\.html$/,
-                use: [
-                    {
-                        loader: 'html-loader',
-                        options: {
-                            sources: false,
-                        },
-                    },
-                ],
-            },
         ],
     },
     resolve: {
@@ -263,19 +241,8 @@ var config = {
             COMMIT_HASH: JSON.stringify(childProcess.execSync('git rev-parse HEAD || echo dev').toString()),
         }),
         new MiniCssExtractPlugin({
-            filename: '[name].[contenthash].css',
-            chunkFilename: '[name].[contenthash].css',
-        }),
-        new HtmlWebpackPlugin({
-            filename: 'root.html',
-            inject: 'head',
-            template: 'root.html',
-            meta: {
-                csp: {
-                    'http-equiv': 'Content-Security-Policy',
-                    content: generateCSP(),
-                },
-            },
+            filename: '[name].css',
+            chunkFilename: '[name].css',
         }),
         new CopyWebpackPlugin({
             patterns: [
@@ -309,96 +276,8 @@ var config = {
                 {from: 'images/cloud-upgrade-person-hand-to-face.png', to: 'images'},
             ],
         }),
-
-        // Generate manifest.json, honouring any configured publicPath. This also handles injecting
-        // <link rel="apple-touch-icon" ... /> and <meta name="apple-*" ... /> tags into root.html.
-        new WebpackPwaManifest({
-            name: 'Mattermost',
-            short_name: 'Mattermost',
-            start_url: '..',
-            description: 'Mattermost is an open source, self-hosted Slack-alternative',
-            background_color: '#ffffff',
-            inject: true,
-            ios: true,
-            fingerprints: false,
-            orientation: 'any',
-            filename: 'manifest.json',
-            icons: [{
-                src: path.resolve('images/favicon/android-chrome-192x192.png'),
-                type: 'image/png',
-                sizes: '192x192',
-            }, {
-                src: path.resolve('images/favicon/apple-touch-icon-120x120.png'),
-                type: 'image/png',
-                sizes: '120x120',
-                ios: true,
-            }, {
-                src: path.resolve('images/favicon/apple-touch-icon-144x144.png'),
-                type: 'image/png',
-                sizes: '144x144',
-                ios: true,
-            }, {
-                src: path.resolve('images/favicon/apple-touch-icon-152x152.png'),
-                type: 'image/png',
-                sizes: '152x152',
-                ios: true,
-            }, {
-                src: path.resolve('images/favicon/apple-touch-icon-57x57.png'),
-                type: 'image/png',
-                sizes: '57x57',
-                ios: true,
-            }, {
-                src: path.resolve('images/favicon/apple-touch-icon-60x60.png'),
-                type: 'image/png',
-                sizes: '60x60',
-                ios: true,
-            }, {
-                src: path.resolve('images/favicon/apple-touch-icon-72x72.png'),
-                type: 'image/png',
-                sizes: '72x72',
-                ios: true,
-            }, {
-                src: path.resolve('images/favicon/apple-touch-icon-76x76.png'),
-                type: 'image/png',
-                sizes: '76x76',
-                ios: true,
-            }, {
-                src: path.resolve('images/favicon/favicon-16x16.png'),
-                type: 'image/png',
-                sizes: '16x16',
-            }, {
-                src: path.resolve('images/favicon/favicon-32x32.png'),
-                type: 'image/png',
-                sizes: '32x32',
-            }, {
-                src: path.resolve('images/favicon/favicon-96x96.png'),
-                type: 'image/png',
-                sizes: '96x96',
-            }],
-        }),
-
-        // Disabling this plugin until we come up with better bundle analysis ci
-        // new BundleAnalyzerPlugin({
-        //     analyzerMode: 'disabled',
-        //     generateStatsFile: true,
-        //     statsFilename: 'bundlestats.json',
-        // }),
     ],
 };
-
-function generateCSP() {
-    let csp = 'script-src \'self\' cdn.rudderlabs.com/ js.stripe.com/v3';
-
-    if (DEV) {
-        // react-hot-loader and development source maps require eval
-        csp += ' \'unsafe-eval\'';
-
-        // Focalboard runs on http://localhost:9006
-        csp += ' http://localhost:9006';
-    }
-
-    return csp;
-}
 
 async function initializeModuleFederation() {
     function makeSingletonSharedModules(packageNames) {
@@ -523,7 +402,6 @@ if (DEV) {
 
 const env = {};
 if (DEV) {
-    env.PUBLIC_PATH = JSON.stringify(publicPath);
     env.RUDDER_KEY = JSON.stringify(process.env.RUDDER_KEY || '');
     env.RUDDER_DATAPLANE_URL = JSON.stringify(process.env.RUDDER_DATAPLANE_URL || '');
     if (process.env.MM_LIVE_RELOAD) {
