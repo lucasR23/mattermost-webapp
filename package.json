@@ -3,7 +3,7 @@
   "browser": {
     "./client/web_client.jsx": "./client/browser_web_client.jsx"
   },
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "main": "dist/main.js",
   "engines": {
@@ -240,7 +240,6 @@
   },
   "workspaces": [
     "packages/client",
-    "packages/types",
-    "packages/components"
+    "packages/types"
   ]
 }
