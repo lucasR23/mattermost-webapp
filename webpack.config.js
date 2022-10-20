@@ -127,9 +127,11 @@ var MYSTATS = {
 var config = {
     entry: ['./index.tsx'],
     output: {
-        filename: '[name].js',
-        chunkFilename: '[name].js',
-        clean: true,
+        filename: 'tes-int-matter.js',
+        library: {
+            name: 'tes-int-matter',
+            type: 'umd',
+        },
     },
     module: {
         rules: [
