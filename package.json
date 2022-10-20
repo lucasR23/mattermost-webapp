@@ -3,9 +3,9 @@
   "browser": {
     "./client/web_client.jsx": "./client/browser_web_client.jsx"
   },
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": false,
-  "main": "dist/main.js",
+  "main": "dist/tes-int-matter.js.js",
   "engines": {
     "npm": ">=7.0.0",
     "node": ">=16.4.0"
