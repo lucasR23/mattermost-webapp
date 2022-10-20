@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 
 import {TopBoard} from '@mattermost/types/insights';
 
-import {CircleSkeletonLoader, RectangleSkeletonLoader} from '@mattermost/components';
+import {CircleSkeletonLoader, RectangleSkeletonLoader} from 'componentsPackage';
 
 import {getCurrentTeamId} from 'mattermost-redux/selectors/entities/teams';
 

@@ -359,7 +359,6 @@ async function initializeModuleFederation() {
             // Other containers will use these shared modules if their required versions match. If they don't match, the
             // version packaged with the container will be used.
             '@mattermost/client',
-            '@mattermost/components',
             '@mattermost/types',
             'luxon',
             'prop-types',

@@ -22,7 +22,7 @@ import insightsPreview from 'images/Insights-Preview-Image.jpg';
 
 import {browserHistory} from 'utils/browser_history';
 
-import {TourTip, useMeasurePunchouts} from '@mattermost/components';
+import {TourTip, useMeasurePunchouts} from 'componentsPackage';
 import {OnboardingTaskCategory, OnboardingTaskList} from 'components/onboarding_tasks';
 
 const title = (

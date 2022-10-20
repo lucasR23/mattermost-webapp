@@ -11,7 +11,7 @@ import Icon from '@mattermost/compass-components/foundations/icon/Icon';
 import {TUserStatus} from '@mattermost/compass-components/shared';
 
 import {PreferenceType} from '@mattermost/types/preferences';
-import {PulsatingDot} from '@mattermost/components';
+import {PulsatingDot} from 'componentsPackage';
 import {ActionFunc} from 'mattermost-redux/types/actions';
 import {CustomStatusDuration, UserCustomStatus, UserProfile, UserStatus} from '@mattermost/types/users';
 

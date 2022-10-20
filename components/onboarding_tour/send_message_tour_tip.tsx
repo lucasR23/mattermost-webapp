@@ -8,7 +8,7 @@ import PrewrittenChips from 'components/advanced_create_post/prewritten_chips';
 
 import {Channel} from '@mattermost/types/channels';
 
-import {useMeasurePunchouts} from '@mattermost/components';
+import {useMeasurePunchouts} from 'componentsPackage';
 
 import OnboardingTourTip from './onboarding_tour_tip';
 

@@ -8,7 +8,7 @@ import {FormattedMessage} from 'react-intl';
 
 import {TopPlaybook} from '@mattermost/types/insights';
 
-import {RectangleSkeletonLoader} from '@mattermost/components';
+import {RectangleSkeletonLoader} from 'componentsPackage';
 
 import {getCurrentTeamId} from 'mattermost-redux/selectors/entities/teams';
 

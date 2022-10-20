@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import {LeastActiveChannel} from '@mattermost/types/insights';
 
-import {CircleSkeletonLoader, RectangleSkeletonLoader} from '@mattermost/components';
+import {CircleSkeletonLoader, RectangleSkeletonLoader} from 'componentsPackage';
 
 import {getMyLeastActiveChannels, getLeastActiveChannelsForTeam} from 'mattermost-redux/actions/insights';
 import {getCurrentTeamId} from 'mattermost-redux/selectors/entities/teams';

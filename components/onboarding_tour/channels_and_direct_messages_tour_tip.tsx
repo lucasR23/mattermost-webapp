@@ -5,7 +5,7 @@ import React from 'react';
 import {FormattedMessage} from 'react-intl';
 import {useSelector} from 'react-redux';
 
-import {useMeasurePunchouts} from '@mattermost/components';
+import {useMeasurePunchouts} from 'componentsPackage';
 import {getChannelsNameMapInCurrentTeam} from 'mattermost-redux/selectors/entities/channels';
 import {GlobalState} from 'types/store';
 import Constants from 'utils/constants';

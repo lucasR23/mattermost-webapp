@@ -8,7 +8,7 @@ import {FormattedMessage} from 'react-intl';
 
 import {TopChannel, TopChannelGraphData} from '@mattermost/types/insights';
 
-import {CircleSkeletonLoader, RectangleSkeletonLoader} from '@mattermost/components';
+import {CircleSkeletonLoader, RectangleSkeletonLoader} from 'componentsPackage';
 
 import {getCurrentRelativeTeamUrl, getCurrentTeamId} from 'mattermost-redux/selectors/entities/teams';
 import {getMyTopChannels, getTopChannelsForTeam} from 'mattermost-redux/actions/insights';

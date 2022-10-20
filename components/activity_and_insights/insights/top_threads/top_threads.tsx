@@ -7,7 +7,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {TopThread} from '@mattermost/types/insights';
 import {GlobalState} from '@mattermost/types/store';
 
-import {CircleSkeletonLoader, RectangleSkeletonLoader} from '@mattermost/components';
+import {CircleSkeletonLoader, RectangleSkeletonLoader} from 'componentsPackage';
 
 import {getMyTopThreads, getTopThreadsForTeam} from 'mattermost-redux/actions/insights';
 import {getCurrentTeamId} from 'mattermost-redux/selectors/entities/teams';

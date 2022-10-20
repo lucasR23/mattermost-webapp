@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import {NewMember, TopDM} from '@mattermost/types/insights';
 
-import {CircleSkeletonLoader, RectangleSkeletonLoader} from '@mattermost/components';
+import {CircleSkeletonLoader, RectangleSkeletonLoader} from 'componentsPackage';
 
 import {getMyTopDMs, getNewTeamMembers} from 'mattermost-redux/actions/insights';
 import {getCurrentTeam} from 'mattermost-redux/selectors/entities/teams';

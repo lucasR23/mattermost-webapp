@@ -2,7 +2,7 @@
 // See LICENSE.txt for license information.
 import {useMemo} from 'react';
 
-import {useElementAvailable} from '@mattermost/components';
+import {useElementAvailable} from 'componentsPackage';
 
 import {TutorialTipPunchout} from './tutorial_tip_backdrop';
 

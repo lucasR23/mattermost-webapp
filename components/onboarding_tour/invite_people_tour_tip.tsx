@@ -4,7 +4,7 @@
 import React from 'react';
 import {FormattedMessage} from 'react-intl';
 
-import {useMeasurePunchouts} from '@mattermost/components';
+import {useMeasurePunchouts} from 'componentsPackage';
 
 import OnboardingTourTip from './onboarding_tour_tip';
 

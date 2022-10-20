@@ -10,7 +10,7 @@ import {DispatchFunc} from 'mattermost-redux/types/actions';
 import {trackEvent} from 'actions/telemetry_actions.jsx';
 
 import Constants, {RecommendedNextStepsLegacy} from 'utils/constants';
-import {PulsatingDot} from '@mattermost/components';
+import {PulsatingDot} from 'componentsPackage';
 
 import * as Utils from 'utils/utils';
 

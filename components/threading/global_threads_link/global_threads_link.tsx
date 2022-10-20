@@ -32,7 +32,7 @@ import Constants, {
 import CollapsedReplyThreadsModal
     from 'components/crt_tour/collapsed_reply_threads_modal/collapsed_reply_threads_modal';
 
-import {PulsatingDot} from '@mattermost/components';
+import {PulsatingDot} from 'componentsPackage';
 import {openModal} from 'actions/views/modals';
 
 import ThreadsIcon from './threads_icon';

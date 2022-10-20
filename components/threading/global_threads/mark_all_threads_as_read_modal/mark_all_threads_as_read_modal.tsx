@@ -3,7 +3,7 @@
 import * as React from 'react';
 import {useIntl} from 'react-intl';
 
-import {GenericModal} from '@mattermost/components';
+import {GenericModal} from 'componentsPackage';
 
 import './mark_all_threads_as_read_modal.scss';
 

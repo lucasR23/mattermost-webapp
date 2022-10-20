@@ -5,7 +5,7 @@ import React from 'react';
 
 import {FormattedMessage} from 'react-intl';
 
-import {useMeasurePunchouts} from '@mattermost/components';
+import {useMeasurePunchouts} from 'componentsPackage';
 
 import BoardsImg from 'images/boards_tour_tip.svg';
 

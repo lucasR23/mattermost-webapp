@@ -6,7 +6,7 @@ import {FormattedMessage} from 'react-intl';
 
 import {Placement} from 'tippy.js';
 
-import {TourTip, PunchOutCoordsHeightAndWidth} from '@mattermost/components';
+import {TourTip, PunchOutCoordsHeightAndWidth} from 'componentsPackage';
 
 import useBoardingTourTipManager from './onboarding_tour_manager';
 import {getLastStep} from './utils';
