@@ -4,6 +4,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import App from 'tes-int-matter';
+
 import {logError} from 'mattermost-redux/actions/errors';
 
 // Import our styles
@@ -16,7 +18,6 @@ import '@mattermost/components/dist/index.esm.css';
 import {isDevMode, setCSRFFromCookie} from 'utils/utils';
 import {AnnouncementBarTypes} from 'utils/constants';
 import store from 'stores/redux_store.jsx';
-import App from 'components/app';
 
 declare global {
     interface Window {
