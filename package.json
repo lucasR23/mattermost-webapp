@@ -5,7 +5,7 @@
   },
   "version": "0.0.4",
   "private": false,
-  "main": "dist/tes-int-matter.js.js",
+  "main": "dist/tes-int-matter.js",
   "engines": {
     "npm": ">=7.0.0",
     "node": ">=16.4.0"
