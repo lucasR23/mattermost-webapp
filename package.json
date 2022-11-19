@@ -3,9 +3,12 @@
   "browser": {
     "./client/web_client.jsx": "./client/browser_web_client.jsx"
   },
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": false,
   "main": "dist/tes-int-matter.js",
+  "files": [
+    "dist"
+  ],
   "engines": {
     "npm": ">=7.0.0",
     "node": ">=16.4.0"
@@ -214,7 +217,6 @@
     "yup": "0.32.11"
   },
   "scripts": {
-    "postinstall": "npm run build --workspaces",
     "check": "eslint --ext .js,.jsx,.tsx,.ts . --quiet --cache && stylelint \"**/*.{css,scss}\" --cache",
     "fix": "eslint --ext .js,.jsx,.tsx,.ts . --quiet --fix --cache && stylelint \"**/*.{css,scss}\" --fix --cache",
     "build": "node scripts/build",
