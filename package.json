@@ -3,7 +3,7 @@
   "browser": {
     "./client/web_client.jsx": "./client/browser_web_client.jsx"
   },
-  "version": "0.0.5",
+  "version": "0.0.6",
   "private": false,
   "main": "dist/tes-int-matter.js",
   "files": [

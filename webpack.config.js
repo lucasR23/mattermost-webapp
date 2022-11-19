@@ -132,6 +132,7 @@ var config = {
             name: 'tes-int-matter',
             type: 'umd',
         },
+        globalObject: 'this',
     },
     module: {
         rules: [
