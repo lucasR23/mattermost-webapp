@@ -2,4 +2,9 @@
 // See LICENSE.txt for license information.
 import App from 'components/app';
 
+console.log('LOADING MATTERMOST')
+require('react-dom');
+window.React2 = require('react');
+console.log('REACT inside mattermost:', window.React1 === window.React2);
+
 export default App;

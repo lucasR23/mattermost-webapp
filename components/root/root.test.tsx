@@ -62,7 +62,6 @@ describe('components/Root', () => {
             migrateRecentEmojis: jest.fn(),
             savePreferences: jest.fn(),
             registerCustomPostRenderer: jest.fn(),
-            initializeProducts: jest.fn(),
         },
         permalinkRedirectTeamName: '',
         showLaunchingWorkspace: false,

@@ -54,3 +54,7 @@ Other Install Guides:
 - **Email** - Subscribe to our [newsletter](https://mattermost.com/community-newsletter/)
 
 Any other questions, mail us at [info@mattermost.com](mailto:info@mattermost.com). We'd love to meet you!
+
+
+I TRIED TO REMOVE EVERY LOADER OF CSS BECAUSE IT CREATED MANY document. statements
+In the project still appears other doucment. lines so I disabled the ssr in nextjs for chat page to see if that improves the error. Also using the clinetOnly component
