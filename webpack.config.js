@@ -12,7 +12,7 @@ const nodeExternals = require('webpack-node-externals');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LiveReloadPlugin = require('webpack-livereload-plugin');
 
-// const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
+const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 
 
 const NPM_TARGET = process.env.npm_lifecycle_event;
@@ -231,6 +231,9 @@ var config = {
     performance: {
         hints: 'warning',
     },
+    optimization: {
+        minimize: false,
+    },
     target: 'web',
     plugins: [
         new webpack.ProvidePlugin({
@@ -275,6 +278,7 @@ var config = {
                 {from: 'images/cloud-upgrade-person-hand-to-face.png', to: 'images'},
             ],
         }),
+        new BundleAnalyzerPlugin(),
     ],
 };
 
@@ -316,52 +320,52 @@ if (targetIsTest) {
     config.externals = [nodeExternals()];
 }
 
-if (targetIsDevServer) {
-    config = {
-        ...config,
-        devtool: 'eval-cheap-module-source-map',
-        devServer: {
-            liveReload: true,
-            proxy: [{
-                context: () => true,
-                bypass(req) {
-                    if (req.url.indexOf('/api') === 0 ||
-                        req.url.indexOf('/plugins') === 0 ||
-                        req.url.indexOf('/static/plugins/') === 0 ||
-                        req.url.indexOf('/sockjs-node/') !== -1) {
-                        return null; // send through proxy to the server
-                    }
-                    if (req.url.indexOf('/static/') === 0) {
-                        return path; // return the webpacked asset
-                    }
+// if (targetIsDevServer) {
+//     config = {
+//         ...config,
+//         devtool: 'eval-cheap-module-source-map',
+//         devServer: {
+//             liveReload: true,
+//             proxy: [{
+//                 context: () => true,
+//                 bypass(req) {
+//                     if (req.url.indexOf('/api') === 0 ||
+//                         req.url.indexOf('/plugins') === 0 ||
+//                         req.url.indexOf('/static/plugins/') === 0 ||
+//                         req.url.indexOf('/sockjs-node/') !== -1) {
+//                         return null; // send through proxy to the server
+//                     }
+//                     if (req.url.indexOf('/static/') === 0) {
+//                         return path; // return the webpacked asset
+//                     }
 
-                    // redirect (root, team routes, etc)
-                    return '/static/root.html';
-                },
-                logLevel: 'silent',
-                target: 'http://localhost:8065',
-                xfwd: true,
-                ws: true,
-            }],
-            port: 9005,
-            devMiddleware: {
-                writeToDisk: false,
-            },
-        },
-        performance: false,
-        optimization: {
-            ...config.optimization,
-            splitChunks: false,
-        },
-        resolve: {
-            ...config.resolve,
-            alias: {
-                ...config.resolve.alias,
-                'react-dom': '@hot-loader/react-dom',
-            },
-        },
-    };
-}
+//                     // redirect (root, team routes, etc)
+//                     return '/static/root.html';
+//                 },
+//                 logLevel: 'silent',
+//                 target: 'http://localhost:8065',
+//                 xfwd: true,
+//                 ws: true,
+//             }],
+//             port: 9005,
+//             devMiddleware: {
+//                 writeToDisk: false,
+//             },
+//         },
+//         performance: false,
+//         optimization: {
+//             ...config.optimization,
+//             splitChunks: false,
+//         },
+//         resolve: {
+//             ...config.resolve,
+//             alias: {
+//                 ...config.resolve.alias,
+//                 'react-dom': '@hot-loader/react-dom',
+//             },
+//         },
+//     };
+// }
 
 // Export PRODUCTION_PERF_DEBUG=1 when running webpack to enable support for the react profiler
 // even while generating production code. (Performance testing development code is typically

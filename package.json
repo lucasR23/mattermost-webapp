@@ -3,7 +3,7 @@
   "browser": {
     "./client/web_client.jsx": "./client/browser_web_client.jsx"
   },
-  "version": "0.0.20",
+  "version": "0.0.21",
   "private": false,
   "main": "dist/tes-int-matter.js",
   "files": [
@@ -12,6 +12,31 @@
   "engines": {
     "npm": ">=7.0.0",
     "node": ">=16.4.0"
+  },
+  "peerDependencies": {
+    "react": "16.13.1",
+    "react-beautiful-dnd": "13.1.0",
+    "react-bootstrap": "github:mattermost/react-bootstrap#d821e2b1db1059bd36112d7587fd1b0912b27626",
+    "react-color": "2.19.3",
+    "react-contextmenu": "2.14.0",
+    "react-custom-scrollbars": "4.2.1",
+    "react-day-picker": "7.4.10",
+    "react-dom": "16.13.1",
+    "react-hot-loader": "4.13.0",
+    "react-intl": "5.20.10",
+    "react-is": "16.13.1",
+    "react-overlays": "0.9.3",
+    "react-popper": "2.2.5",
+    "react-redux": "7.2.4",
+    "react-router-dom": "5.3.3",
+    "react-select": "2.4.4",
+    "react-transition-group": "4.4.2",
+    "react-virtualized-auto-sizer": "1.0.6",
+    "react-window": "1.8.7",
+    "react-window-infinite-loader": "1.0.8",
+    "@floating-ui/react-dom": "0.7.2",
+    "@floating-ui/react-dom-interactions": "0.9.1",
+    "typescript": "4.3.4"
   },
   "dependencies": {
     "@guyplusplus/turndown-plugin-gfm": "1.0.7",
